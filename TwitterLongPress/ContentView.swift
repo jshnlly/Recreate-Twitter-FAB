@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Set up haptics
+
 class HapticManager {
     static let instance = HapticManager()
     
@@ -106,7 +108,7 @@ struct ContentView: View {
                 .animation(Animation.easeInOut(duration: 0.3), value: isSuccess)
                 .animation(Animation.easeInOut(duration: 0.3), value: press)
             
-            // Created a second plus icon that overtakes the primary one so that I could 'tap' instead of long pressing to reset the button (definitely a better way to do this)
+            // Created a second plus icon that overtakes the primary one so that I could 'tap' instead of long pressing to reset the button (there's definitely a better way to do this lol)
             
             Image(systemName: "plus")
                 .rotationEffect(Angle(degrees: 45))
