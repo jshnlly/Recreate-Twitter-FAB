@@ -46,41 +46,63 @@ struct ContentView: View {
             
             // Stacking the three actions below the primary button
             
-            Image(systemName: "pencil")
-                .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
-                .font(.title2)
-                .foregroundColor(.white)
-                .frame(width: 52, height: 52)
-                .background(Color.blue)
-                .clipShape(Circle())
-                .scaleEffect(isSuccess ? 1 : 0.5)
-                .shadow(color: .black.opacity(0.2), radius: 4.0)
-                .offset(x: isSuccess ? -12 : 0, y: isSuccess ? -120 : 0)
-                .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
+            ZStack {
+                Circle()
+                    .foregroundColor(Color("TwitterBlue"))
+                Image("quill")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .frame(width: 52, height: 52)
+            .scaleEffect(isSuccess ? 1 : 0.5)
+            .shadow(color: .black.opacity(0.2), radius: 4.0)
+            .offset(x: isSuccess ? -12 : 0, y: isSuccess ? -120 : 0)
+            .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
             
-            Image(systemName: "photo.fill")
-                .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
-                .font(.title2)
-                .foregroundColor(.white)
-                .frame(width: 52, height: 52)
-                .background(Color.blue)
-                .clipShape(Circle())
-                .scaleEffect(isSuccess ? 1 : 0.5)
-                .shadow(color: .black.opacity(0.2), radius: 4.0)
-                .offset(x: isSuccess ? -80 : 0, y: isSuccess ? -80 : 0)
-                .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
             
-            Image(systemName: "mic.fill")
-                .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
-                .font(.title2)
-                .foregroundColor(.white)
-                .frame(width: 52, height: 52)
-                .background(Color.purple)
-                .clipShape(Circle())
-                .scaleEffect(isSuccess ? 1 : 0.5)
-                .shadow(color: .black.opacity(0.2), radius: 4.0)
-                .offset(x: isSuccess ? -120 : 0, y: isSuccess ? -12 : 0)
-                .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
+            ZStack {
+                Circle()
+                    .foregroundColor(Color("TwitterBlue"))
+                Image("GIF")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .frame(width: 52, height: 52)
+            .scaleEffect(isSuccess ? 1 : 0.5)
+            .shadow(color: .black.opacity(0.2), radius: 4.0)
+            .offset(x: isSuccess ? -80 : 0, y: isSuccess ? -80 : 0)
+            .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
+            
+            ZStack {
+                LinearGradient(colors: [Color("BlueGradient"), Color("PurpleGradient")], startPoint: .bottomLeading, endPoint: .topTrailing)
+                    .clipShape(Circle() )
+                Image("mic")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+            }
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .frame(width: 52, height: 52)
+            .scaleEffect(isSuccess ? 1 : 0.5)
+            .clipShape(Circle())
+            .shadow(color: .black.opacity(0.2), radius: 4.0)
+            .offset(x: isSuccess ? -120 : 0, y: isSuccess ? -12 : 0)
+            .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
+            
+            
+            
+//            Image(systemName: "mic.fill")
+//                .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+//                .font(.title2)
+//                .foregroundColor(.white)
+//                .frame(width: 52, height: 52)
+//                .background(LinearGradient(colors: [Color("BlueGradient"), Color("PurpleGradient")], startPoint: .bottomLeading, endPoint: .topTrailing))
+//                .clipShape(Circle())
+//                .scaleEffect(isSuccess ? 1 : 0.5)
+//                .shadow(color: .black.opacity(0.2), radius: 4.0)
+//                .offset(x: isSuccess ? -120 : 0, y: isSuccess ? -12 : 0)
+//                .animation(Animation.spring(response: 0.25, dampingFraction: 0.65), value: isSuccess)
             
             // Plus icons
             
@@ -95,7 +117,7 @@ struct ContentView: View {
                 .scaleEffect(press || isSuccess ? 0.8 : 1)
                 .shadow(color: .black.opacity(0.2), radius: 4.0)
                 .gesture(
-                    LongPressGesture(minimumDuration: 1.0)
+                    LongPressGesture(minimumDuration: 0.6)
                         .updating($press) { currentState, gestureState, transaction in
                                 gestureState = currentState
                         }
@@ -108,7 +130,7 @@ struct ContentView: View {
                 .animation(Animation.easeInOut(duration: 0.3), value: isSuccess)
                 .animation(Animation.easeInOut(duration: 0.3), value: press)
             
-            // Created a second plus icon that overtakes the primary one so that I could 'tap' instead of long pressing to reset the button (there's definitely a better way to do this lol)
+            // Created a second plus icon that overtakes the primary one so that I could 'tap' instead of long pressing to reset the button (there's definitely a better way to do this)
             
             Image(systemName: "plus")
                 .rotationEffect(Angle(degrees: 45))
@@ -125,6 +147,7 @@ struct ContentView: View {
                     isSuccess = false
                     
                 }
+            
                 
         }
         .padding(24)
