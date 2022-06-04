@@ -53,7 +53,7 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
             }
-            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : 90))
             .frame(width: 52, height: 52)
             .scaleEffect(isSuccess ? 1 : 0.5)
             .shadow(color: .black.opacity(0.2), radius: 4.0)
@@ -68,7 +68,7 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
             }
-            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : 90))
             .frame(width: 52, height: 52)
             .scaleEffect(isSuccess ? 1 : 0.5)
             .shadow(color: .black.opacity(0.2), radius: 4.0)
@@ -82,7 +82,7 @@ struct ContentView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
             }
-            .rotationEffect(Angle(degrees: isSuccess ? 0 : -90))
+            .rotationEffect(Angle(degrees: isSuccess ? 0 : 90))
             .frame(width: 52, height: 52)
             .scaleEffect(isSuccess ? 1 : 0.5)
             .clipShape(Circle())
@@ -145,7 +145,7 @@ struct ContentView: View {
                 .animation(Animation.easeInOut(duration: 0.3), value: isSuccess)
                 .onTapGesture {
                     isSuccess = false
-                    
+                    HapticManager.instance.notif(type: .success)
                 }
             
                 
